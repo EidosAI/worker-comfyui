@@ -32,6 +32,7 @@
 - `basic_test` 進一步降載：`512x512`、`steps=4`，並將 timeout 從 `300000` 提高到 `900000`，降低 cold start + polling 導致的逾時誤判。
 - `basic_test` 改為不依賴模型/volume 的 smoke test（`LoadImage -> SaveImage`），避免 build/test 階段因未掛載 volume 而失敗。
 - `basic_test` timeout 調整為 `180000`，測試應更快完成與回報。
+- 目前採 UI 直接 deploy 驗證流程，暫時停用 RunPod 自動測試觸發：`tests.json` 重新命名為 `.runpod/tests.disabled.json`（不被平台當成測試設定讀取）。
 
 ### Network Volume bootstrap script
 
