@@ -2,6 +2,33 @@
 
 目標：不經過本機下載，直接在 RunPod Pod 內把模型拉到同一顆 Network Volume。
 
+## 最快流程（一次貼上）
+
+```bash
+git clone https://user:token@github.com/EidosAI/worker-comfyui.git
+cd worker-comfyui
+git checkout develop
+export HUGGINGFACE_ACCESS_TOKEN='hf_...'
+./scripts/volume/sync-models.sh
+```
+
+- 若你的 volume 掛載路徑是 `/runpod-volume`，請改用：
+
+```bash
+./scripts/volume/sync-models.sh --volume-root /runpod-volume
+```
+
+- 本地檢查 S3（確認模型是否真的上到 RunPod S3）：
+
+```bash
+AWS_ACCESS_KEY_ID="xxx" \
+AWS_SECRET_ACCESS_KEY="xxx" \
+AWS_DEFAULT_REGION="eur-no-1" \
+aws s3 ls --recursive \
+  --endpoint-url https://s3api-eur-no-1.runpod.io \
+  s3://fooo/models/
+```
+
 ## 為什麼用這種方式
 
 - 大模型不需要先下載到本機再上傳。

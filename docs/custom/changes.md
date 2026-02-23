@@ -9,6 +9,9 @@
 - 改動後：`FROM runpod/worker-comfyui:5.7.1-base`，採 pure volume-first，不在 image 內下載任何模型。
 - 修正：新增 `COPY src/extra_model_paths.yaml /comfyui/extra_model_paths.yaml`。
   - 原因：若只 `FROM ...-base` 但未覆蓋 `extra_model_paths.yaml`，ComfyUI 可能不會掃描 `/runpod-volume/models/...`，導致 `CLIPLoader`/`UNETLoader` 出現 `not in []`。
+- 調整：`Dockerfile` 改為貼齊 upstream 原文結構（`runpod-workers/worker-comfyui` `main`），僅移除不需要的 `downloader/final` model-download stages，維持 pure volume-first。
+  - `COMFYUI_VERSION` 預設改為 `latest`，可透過 build-arg 覆蓋。
+  - 保留 `MODEL_TYPE` / `HUGGINGFACE_ACCESS_TOKEN` build args 以相容現有 bake target 參數，但不再用於 image 內建模型下載。
 
 ### z-image only
 
