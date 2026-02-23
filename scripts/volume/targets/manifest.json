@@ -1,0 +1,61 @@
+{
+  "targets": {
+    "z-image-core": {
+      "description": "qwen_3_4b + z_image_turbo_bf16 + ae + controlnet patch",
+      "files": [
+        {
+          "path": "models/text_encoders/qwen_3_4b.safetensors",
+          "url": "https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/text_encoders/qwen_3_4b.safetensors"
+        },
+        {
+          "path": "models/diffusion_models/z_image_turbo_bf16.safetensors",
+          "url": "https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/diffusion_models/z_image_turbo_bf16.safetensors"
+        },
+        {
+          "path": "models/vae/ae.safetensors",
+          "url": "https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/vae/ae.safetensors"
+        },
+        {
+          "path": "models/model_patches/Z-Image-Turbo-Fun-Controlnet-Union.safetensors",
+          "url": "https://huggingface.co/alibaba-pai/Z-Image-Turbo-Fun-Controlnet-Union/resolve/main/Z-Image-Turbo-Fun-Controlnet-Union.safetensors"
+        }
+      ]
+    },
+    "z-image-nvfp4": {
+      "description": "z_image_turbo_nvfp4",
+      "files": [
+        {
+          "path": "models/diffusion_models/z_image_turbo_nvfp4.safetensors",
+          "url": "https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/diffusion_models/z_image_turbo_nvfp4.safetensors"
+        }
+      ]
+    },
+    "z-image-qwen-fp4": {
+      "description": "qwen_3_4b_fp4_mixed",
+      "files": [
+        {
+          "path": "models/text_encoders/qwen_3_4b_fp4_mixed.safetensors",
+          "url": "https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/text_encoders/qwen_3_4b_fp4_mixed.safetensors"
+        }
+      ]
+    },
+    "z-image-qwen-fp8": {
+      "description": "qwen_3_4b_fp8_mixed",
+      "files": [
+        {
+          "path": "models/text_encoders/qwen_3_4b_fp8_mixed.safetensors",
+          "url": "https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/text_encoders/qwen_3_4b_fp8_mixed.safetensors"
+        }
+      ]
+    },
+    "z-image-distill-lora": {
+      "description": "z_image_turbo_distill_patch_lora_bf16",
+      "files": [
+        {
+          "path": "models/loras/z_image_turbo_distill_patch_lora_bf16.safetensors",
+          "url": "https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/loras/z_image_turbo_distill_patch_lora_bf16.safetensors"
+        }
+      ]
+    }
+  }
+}

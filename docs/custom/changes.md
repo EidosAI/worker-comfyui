@@ -39,6 +39,7 @@
 - 更新 `src/extra_model_paths.yaml`，加入 `diffusion_models`、`text_encoders`、`model_patches` 映射，確保 z-image 模型可從 volume 被 ComfyUI 掃描。
 - 腳本移入專用目錄 `scripts/volume/`，避免與其他 scripts 混在同一層。
 - `scripts/volume/` 進一步重構：入口、函式庫（`lib/`）、目標資料（`targets/`）分離。
+- target 定義改為 `scripts/volume/targets/manifest.json`（JSON + `jq` 解析），不再使用多個 `.list/.tsv`。
 - 新增 `scripts/volume/check.sh`（語法/lint/格式/smoke 一鍵檢查）與 `scripts/volume/test-smoke.sh`。
 - 後續每次修改 volume 相關 shell，固定執行 `./scripts/volume/check.sh`。
 - 修正為 bash 3 相容寫法（移除 `declare -n`/新式陣列依賴），可在 macOS 預設 bash 下執行。

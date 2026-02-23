@@ -8,12 +8,12 @@ TMP_DIR="$(mktemp -d)"
 trap 'rm -rf "${TMP_DIR}"' EXIT
 
 assert_contains() {
-  local content="$1"
-  local needle="$2"
-  if ! grep -Fq "$needle" <<<"$content"; then
-    echo "assert_contains failed: expected '${needle}'" >&2
-    exit 1
-  fi
+	local content="$1"
+	local needle="$2"
+	if ! grep -Fq "$needle" <<<"$content"; then
+		echo "assert_contains failed: expected '${needle}'" >&2
+		exit 1
+	fi
 }
 
 echo "smoke: --list"
@@ -31,8 +31,8 @@ unknown_output="$("${SYNC_SCRIPT}" --target not-a-target 2>&1)"
 unknown_status=$?
 set -e
 if [[ ${unknown_status} -eq 0 ]]; then
-  echo "expected non-zero for unknown target" >&2
-  exit 1
+	echo "expected non-zero for unknown target" >&2
+	exit 1
 fi
 assert_contains "${unknown_output}" "Unknown target"
 

@@ -20,7 +20,7 @@
 - 檢查：`scripts/volume/check.sh`
 - Smoke test：`scripts/volume/test-smoke.sh`
 - 函式庫：`scripts/volume/lib/*.sh`
-- 模型清單：`scripts/volume/targets/*.list`
+- 模型清單：`scripts/volume/targets/manifest.json`
 
 ## 每次改 shell 後的檢查流程（固定）
 

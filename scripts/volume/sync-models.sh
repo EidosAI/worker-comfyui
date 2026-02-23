@@ -20,7 +20,7 @@ declare -a SELECTED_TARGETS=()
 declare -a QUEUE=()
 
 usage() {
-  cat <<EOF
+	cat <<EOF
 Usage:
   ${SCRIPT_NAME} [options]
 
@@ -60,53 +60,53 @@ EOF
 }
 
 while [[ $# -gt 0 ]]; do
-  case "$1" in
-    --volume-root)
-      VOLUME_ROOT="${2:-}"
-      shift 2
-      ;;
-    --target)
-      SELECTED_TARGETS+=("${2:-}")
-      shift 2
-      ;;
-    --all)
-      DOWNLOAD_ALL=true
-      shift
-      ;;
-    --force)
-      FORCE=true
-      shift
-      ;;
-    --list)
-      LIST_ONLY=true
-      shift
-      ;;
-    -h|--help)
-      usage
-      exit 0
-      ;;
-    *)
-      err "Unknown option: $1"
-      usage
-      exit 1
-      ;;
-  esac
+	case "$1" in
+	--volume-root)
+		VOLUME_ROOT="${2:-}"
+		shift 2
+		;;
+	--target)
+		SELECTED_TARGETS+=("${2:-}")
+		shift 2
+		;;
+	--all)
+		DOWNLOAD_ALL=true
+		shift
+		;;
+	--force)
+		FORCE=true
+		shift
+		;;
+	--list)
+		LIST_ONLY=true
+		shift
+		;;
+	-h | --help)
+		usage
+		exit 0
+		;;
+	*)
+		err "Unknown option: $1"
+		usage
+		exit 1
+		;;
+	esac
 done
 
 if [[ "$LIST_ONLY" == "true" ]]; then
-  list_targets
-  exit 0
+	list_targets
+	exit 0
 fi
 
 if [[ "$DOWNLOAD_ALL" == "true" ]]; then
-  SELECTED_TARGETS=()
-  while IFS= read -r target; do
-    [[ -n "${target}" ]] && SELECTED_TARGETS+=("${target}")
-  done < <(list_targets)
+	SELECTED_TARGETS=()
+	while IFS= read -r target; do
+		[[ -n "${target}" ]] && SELECTED_TARGETS+=("${target}")
+	done < <(list_targets)
 fi
 
 if [[ ${#SELECTED_TARGETS[@]} -eq 0 ]]; then
-  SELECTED_TARGETS=("z-image-core")
+	SELECTED_TARGETS=("z-image-core")
 fi
 
 log "Volume root: ${VOLUME_ROOT}"
@@ -114,31 +114,31 @@ log "Targets: ${SELECTED_TARGETS[*]}"
 echo
 
 queue_contains() {
-  local needle="$1"
-  local item
-  if [[ ${#QUEUE[@]} -eq 0 ]]; then
-    return 1
-  fi
-  for item in "${QUEUE[@]}"; do
-    if [[ "${item}" == "${needle}" ]]; then
-      return 0
-    fi
-  done
-  return 1
+	local needle="$1"
+	local item
+	if [[ ${#QUEUE[@]} -eq 0 ]]; then
+		return 1
+	fi
+	for item in "${QUEUE[@]}"; do
+		if [[ "${item}" == "${needle}" ]]; then
+			return 0
+		fi
+	done
+	return 1
 }
 
 for target in "${SELECTED_TARGETS[@]}"; do
-  if ! target_exists "${target}"; then
-    err "Unknown target: ${target}"
-    err "Run '${SCRIPT_NAME} --list' to see available targets."
-    exit 1
-  fi
-  while IFS= read -r item; do
-    [[ -z "${item}" ]] && continue
-    if ! queue_contains "${item}"; then
-      QUEUE+=("${item}")
-    fi
-  done < <(print_target_items "${target}")
+	if ! target_exists "${target}"; then
+		err "Unknown target: ${target}"
+		err "Run '${SCRIPT_NAME} --list' to see available targets."
+		exit 1
+	fi
+	while IFS= read -r item; do
+		[[ -z "${item}" ]] && continue
+		if ! queue_contains "${item}"; then
+			QUEUE+=("${item}")
+		fi
+	done < <(print_target_items "${target}")
 done
 
 success=0
@@ -146,34 +146,34 @@ skipped=0
 failed=0
 
 if [[ ${#QUEUE[@]} -eq 0 ]]; then
-  log "No files queued. Nothing to do."
+	log "No files queued. Nothing to do."
 else
-  for item in "${QUEUE[@]}"; do
-    relative_path="${item%%|*}"
-    url="${item#*|}"
-    out_path="${VOLUME_ROOT}/${relative_path}"
+	for item in "${QUEUE[@]}"; do
+		relative_path="${item%%|*}"
+		url="${item#*|}"
+		out_path="${VOLUME_ROOT}/${relative_path}"
 
-    mkdir -p "$(dirname "$out_path")"
+		mkdir -p "$(dirname "$out_path")"
 
-    if [[ -s "$out_path" && "$FORCE" != "true" ]]; then
-      log "[skip] ${relative_path} (already exists)"
-      skipped=$((skipped + 1))
-      continue
-    fi
+		if [[ -s "$out_path" && "$FORCE" != "true" ]]; then
+			log "[skip] ${relative_path} (already exists)"
+			skipped=$((skipped + 1))
+			continue
+		fi
 
-    log "[dl]   ${relative_path}"
-    if download_file "$url" "$out_path"; then
-      success=$((success + 1))
-    else
-      err "[fail] ${relative_path}"
-      failed=$((failed + 1))
-    fi
-  done
+		log "[dl]   ${relative_path}"
+		if download_file "$url" "$out_path"; then
+			success=$((success + 1))
+		else
+			err "[fail] ${relative_path}"
+			failed=$((failed + 1))
+		fi
+	done
 fi
 
 echo
 log "Done. success=${success} skipped=${skipped} failed=${failed}"
 
 if [[ $failed -gt 0 ]]; then
-  exit 1
+	exit 1
 fi

@@ -1,5 +1,0 @@
-z-image-core	qwen_3_4b + z_image_turbo_bf16 + ae + controlnet patch
-z-image-nvfp4	z_image_turbo_nvfp4
-z-image-qwen-fp4	qwen_3_4b_fp4_mixed
-z-image-qwen-fp8	qwen_3_4b_fp8_mixed
-z-image-distill-lora	z_image_turbo_distill_patch_lora_bf16

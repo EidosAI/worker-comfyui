@@ -3,13 +3,13 @@
 set -euo pipefail
 
 log() {
-  printf '%s\n' "$*"
+	printf '%s\n' "$*"
 }
 
 err() {
-  printf '%s\n' "$*" >&2
+	printf '%s\n' "$*" >&2
 }
 
 have_cmd() {
-  command -v "$1" >/dev/null 2>&1
+	command -v "$1" >/dev/null 2>&1
 }
