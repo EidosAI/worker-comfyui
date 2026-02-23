@@ -1,5 +1,25 @@
 {
   "targets": {
+    "flux2-klein-9b-distilled": {
+      "description": "flux-2-klein-9b-fp8 + qwen_3_8b_fp8mixed + flux2-vae",
+      "files": [
+        {
+          "path": "models/diffusion_models/flux-2-klein-9b-fp8.safetensors",
+          "url": "https://huggingface.co/black-forest-labs/FLUX.2-klein-9b-fp8/resolve/main/flux-2-klein-9b-fp8.safetensors",
+          "size_bytes": 10125317714
+        },
+        {
+          "path": "models/text_encoders/qwen_3_8b_fp8mixed.safetensors",
+          "url": "https://huggingface.co/Comfy-Org/flux2-klein-9B/resolve/main/split_files/text_encoders/qwen_3_8b_fp8mixed.safetensors",
+          "size_bytes": 8664848742
+        },
+        {
+          "path": "models/vae/flux2-vae.safetensors",
+          "url": "https://huggingface.co/Comfy-Org/flux2-dev/resolve/main/split_files/vae/flux2-vae.safetensors",
+          "size_bytes": 336213556
+        }
+      ]
+    },
     "z-image-core": {
       "description": "qwen_3_4b + z_image_turbo_bf16 + ae + controlnet patch",
       "files": [

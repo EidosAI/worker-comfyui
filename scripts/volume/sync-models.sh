@@ -27,7 +27,7 @@ Usage:
 
 Description:
   Download selected models directly into a RunPod Network Volume mount.
-  Default behavior downloads only the z-image core set (not all optional files).
+  Default behavior downloads both Flux.2 Klein 9B distilled and z-image core files.
 
 Options:
   --volume-root <path>    Network volume root path. Default: /workspace
@@ -42,7 +42,7 @@ Targets:
 $(render_target_help)
 
 Examples:
-  # Default (z-image core only)
+  # Default (Flux.2 Klein 9B distilled + z-image core)
   ${SCRIPT_NAME}
 
   # Download only NVFP4 variant
@@ -115,7 +115,7 @@ if [[ "$DOWNLOAD_ALL" == "true" ]]; then
 fi
 
 if [[ ${#SELECTED_TARGETS[@]} -eq 0 ]]; then
-	SELECTED_TARGETS=("z-image-core")
+	SELECTED_TARGETS=("flux2-klein-9b-distilled" "z-image-core")
 fi
 
 log "Volume root: ${VOLUME_ROOT}"

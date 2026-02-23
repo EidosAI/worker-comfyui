@@ -18,15 +18,17 @@ assert_contains() {
 
 echo "smoke: --list"
 list_output="$("${SYNC_SCRIPT}" --list)"
-assert_contains "${list_output}" "z-image-core"
+assert_contains "${list_output}" "flux2-klein-9b-distilled"
 
 echo "smoke: default target download (mock)"
 MOCK_DOWNLOAD=true "${SYNC_SCRIPT}" --volume-root "${TMP_DIR}" >/dev/null
+test -s "${TMP_DIR}/models/text_encoders/qwen_3_8b_fp8mixed.safetensors"
+test -s "${TMP_DIR}/models/diffusion_models/flux-2-klein-9b-fp8.safetensors"
 test -s "${TMP_DIR}/models/text_encoders/qwen_3_4b.safetensors"
 test -s "${TMP_DIR}/models/diffusion_models/z_image_turbo_bf16.safetensors"
 
 echo "smoke: estimate mode"
-estimate_output="$("${SYNC_SCRIPT}" --target z-image-core --estimate)"
+estimate_output="$("${SYNC_SCRIPT}" --target flux2-klein-9b-distilled --estimate)"
 assert_contains "${estimate_output}" "Estimate only mode"
 assert_contains "${estimate_output}" "Known size total"
 

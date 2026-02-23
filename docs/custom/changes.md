@@ -51,3 +51,9 @@
 - 新增 `scripts/volume/check.sh`（語法/lint/格式/smoke 一鍵檢查）與 `scripts/volume/test-smoke.sh`。
 - 後續每次修改 volume 相關 shell，固定執行 `./scripts/volume/check.sh`。
 - 修正為 bash 3 相容寫法（移除 `declare -n`/新式陣列依賴），可在 macOS 預設 bash 下執行。
+- 新增 target：`flux2-klein-9b-distilled`，包含：
+  - `models/diffusion_models/flux-2-klein-9b-fp8.safetensors`
+  - `models/text_encoders/qwen_3_8b_fp8mixed.safetensors`
+  - `models/vae/flux2-vae.safetensors`
+- `sync-models.sh` 預設 target 改為同時下載 `flux2-klein-9b-distilled` + `z-image-core`。
+- 注意：`flux-2-klein-9b-fp8.safetensors` 來自 gated repo（BFL），需先在 Hugging Face 接受授權。

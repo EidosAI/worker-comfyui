@@ -45,7 +45,7 @@ apt-get update && apt-get install -y jq
 
 ## 預設行為（非全下載）
 
-不帶參數時，預設只下載 `z-image-core`：
+不帶參數時，預設會下載 `flux2-klein-9b-distilled` + `z-image-core`：
 
 ```bash
 ./scripts/volume/sync-models.sh
@@ -53,6 +53,12 @@ apt-get update && apt-get install -y jq
 
 下載目標：
 
+`flux2-klein-9b-distilled`
+- `models/diffusion_models/flux-2-klein-9b-fp8.safetensors`
+- `models/text_encoders/qwen_3_8b_fp8mixed.safetensors`
+- `models/vae/flux2-vae.safetensors`
+
+`z-image-core`
 - `models/text_encoders/qwen_3_4b.safetensors`
 - `models/diffusion_models/z_image_turbo_bf16.safetensors`
 - `models/vae/ae.safetensors`
@@ -69,6 +75,7 @@ apt-get update && apt-get install -y jq
 只下載特定 target：
 
 ```bash
+./scripts/volume/sync-models.sh --target flux2-klein-9b-distilled
 ./scripts/volume/sync-models.sh --target z-image-nvfp4
 ./scripts/volume/sync-models.sh --target z-image-core --target z-image-qwen-fp8
 ```
@@ -95,7 +102,7 @@ apt-get update && apt-get install -y jq
 強制重抓：
 
 ```bash
-./scripts/volume/sync-models.sh --target z-image-core --force
+./scripts/volume/sync-models.sh --target flux2-klein-9b-distilled --force
 ```
 
 ## Serverless 端要配合的事
