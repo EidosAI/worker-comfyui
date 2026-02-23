@@ -10,20 +10,48 @@
           }
         ],
         "workflow": {
+          "3": {
+            "inputs": {
+              "seed": 47447417949230,
+              "steps": 9,
+              "cfg": 1,
+              "sampler_name": "euler",
+              "scheduler": "simple",
+              "denoise": 1,
+              "model": ["16", 0],
+              "positive": ["6", 0],
+              "negative": ["7", 0],
+              "latent_image": ["13", 0]
+            },
+            "class_type": "KSampler",
+            "_meta": {
+              "title": "KSampler"
+            }
+          },
           "6": {
             "inputs": {
-              "text": "anime cat with massive fluffy fennec ears and a big fluffy tail blonde messy long hair blue eyes wearing a construction outfit placing a fancy black forest cake with candles on top of a dinner table of an old dark Victorian mansion lit by candlelight with a bright window to the foggy forest and very expensive stuff everywhere there are paintings on the walls",
-              "clip": ["30", 1]
+              "text": "cute anime style girl with massive fluffy fennec ears and a big fluffy tail blonde messy long hair blue eyes wearing a maid outfit with a long black gold leaf pattern dress and a white apron",
+              "clip": ["18", 0]
             },
             "class_type": "CLIPTextEncode",
             "_meta": {
               "title": "CLIP Text Encode (Positive Prompt)"
             }
           },
+          "7": {
+            "inputs": {
+              "text": "blurry ugly bad",
+              "clip": ["18", 0]
+            },
+            "class_type": "CLIPTextEncode",
+            "_meta": {
+              "title": "CLIP Text Encode (Negative Prompt)"
+            }
+          },
           "8": {
             "inputs": {
-              "samples": ["31", 0],
-              "vae": ["30", 2]
+              "samples": ["3", 0],
+              "vae": ["17", 0]
             },
             "class_type": "VAEDecode",
             "_meta": {
@@ -40,10 +68,10 @@
               "title": "Save Image"
             }
           },
-          "27": {
+          "13": {
             "inputs": {
-              "width": 512,
-              "height": 512,
+              "width": 1024,
+              "height": 1024,
               "batch_size": 1
             },
             "class_type": "EmptySD3LatentImage",
@@ -51,70 +79,34 @@
               "title": "EmptySD3LatentImage"
             }
           },
-          "30": {
+          "16": {
             "inputs": {
-              "ckpt_name": "flux1-dev-fp8.safetensors"
+              "unet_name": "z_image_turbo_bf16.safetensors",
+              "weight_dtype": "default"
             },
-            "class_type": "CheckpointLoaderSimple",
+            "class_type": "UNETLoader",
             "_meta": {
-              "title": "Load Checkpoint"
+              "title": "Load Diffusion Model"
             }
           },
-          "31": {
+          "17": {
             "inputs": {
-              "seed": 243057879077961,
-              "steps": 10,
-              "cfg": 1,
-              "sampler_name": "euler",
-              "scheduler": "simple",
-              "denoise": 1,
-              "model": ["30", 0],
-              "positive": ["35", 0],
-              "negative": ["33", 0],
-              "latent_image": ["27", 0]
+              "vae_name": "ae.safetensors"
             },
-            "class_type": "KSampler",
+            "class_type": "VAELoader",
             "_meta": {
-              "title": "KSampler"
+              "title": "Load VAE"
             }
           },
-          "33": {
+          "18": {
             "inputs": {
-              "text": "",
-              "clip": ["30", 1]
+              "clip_name": "qwen_3_4b.safetensors",
+              "type": "lumina2",
+              "device": "default"
             },
-            "class_type": "CLIPTextEncode",
+            "class_type": "CLIPLoader",
             "_meta": {
-              "title": "CLIP Text Encode (Negative Prompt)"
-            }
-          },
-          "35": {
-            "inputs": {
-              "guidance": 3.5,
-              "conditioning": ["6", 0]
-            },
-            "class_type": "FluxGuidance",
-            "_meta": {
-              "title": "FluxGuidance"
-            }
-          },
-          "38": {
-            "inputs": {
-              "images": ["8", 0]
-            },
-            "class_type": "PreviewImage",
-            "_meta": {
-              "title": "Preview Image"
-            }
-          },
-          "40": {
-            "inputs": {
-              "filename_prefix": "ComfyUI",
-              "images": ["8", 0]
-            },
-            "class_type": "SaveImage",
-            "_meta": {
-              "title": "Save Image"
+              "title": "Load CLIP"
             }
           }
         }
@@ -131,6 +123,9 @@
         "value": "false"
       }
     ],
-    "allowedCudaVersions": ["12.7", "12.6"]
+    "allowedCudaVersions": [
+      "12.7",
+      "12.6"
+    ]
   }
 }

@@ -6,6 +6,11 @@ Run [ComfyUI](https://github.com/comfyanonymous/ComfyUI) workflows as a serverle
 
 ---
 
+> Fork customization note:
+> This fork has custom deployment/model behavior. See `/docs/custom/` for the maintained customization docs and change log.
+
+[//]: # (Keep this file close to upstream; put fork-specific details in docs/custom.)
+
 [![RunPod](https://api.runpod.io/badge/runpod-workers/worker-comfyui)](https://www.runpod.io/console/hub/runpod-workers/worker-comfyui)
 
 ---
