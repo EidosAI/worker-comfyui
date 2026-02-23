@@ -7,6 +7,8 @@
 - `Dockerfile` 改為基於官方 base image，而非自行重建完整 ComfyUI runtime。
 - 改動前：本地多階段 build（從 CUDA base 開始安裝全部依賴）。
 - 改動後：`FROM runpod/worker-comfyui:5.7.1-base`，採 pure volume-first，不在 image 內下載任何模型。
+- 修正：新增 `COPY src/extra_model_paths.yaml /comfyui/extra_model_paths.yaml`。
+  - 原因：若只 `FROM ...-base` 但未覆蓋 `extra_model_paths.yaml`，ComfyUI 可能不會掃描 `/runpod-volume/models/...`，導致 `CLIPLoader`/`UNETLoader` 出現 `not in []`。
 
 ### z-image only
 
