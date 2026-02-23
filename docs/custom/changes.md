@@ -6,11 +6,11 @@
 
 - `Dockerfile` 改為基於官方 base image，而非自行重建完整 ComfyUI runtime。
 - 改動前：本地多階段 build（從 CUDA base 開始安裝全部依賴）。
-- 改動後：`FROM runpod/worker-comfyui:5.7.1-base`，只額外下載 z-image-turbo 模型資產。
+- 改動後：`FROM runpod/worker-comfyui:5.7.1-base`，採 pure volume-first，不在 image 內下載任何模型。
 
 ### z-image only
 
-- 目前 image 只包含 z-image-turbo 相關模型：
+- 目前 z-image 模型改由 Network Volume 管理（非 image 內建）：
   - `models/text_encoders/qwen_3_4b.safetensors`
   - `models/diffusion_models/z_image_turbo_bf16.safetensors`
   - `models/vae/ae.safetensors`
@@ -27,3 +27,18 @@
 - 原因：image 已改為 z-image-only，不再包含 `flux1-dev-fp8.safetensors`，舊測試會在 `CheckpointLoaderSimple` 驗證失敗。
 - `.runpod/README.md` 維持 upstream 內容，只加短註記導引到 `docs/custom/`。
 - 規則：fork-specific 細節優先寫在 `docs/custom/`，避免重寫 `.runpod/README.md` 全文。
+- `basic_test` 進一步降載：`512x512`、`steps=4`，並將 timeout 從 `300000` 提高到 `900000`，降低 cold start + polling 導致的逾時誤判。
+
+### Network Volume bootstrap script
+
+- 新增 `scripts/volume/sync-models.sh`，可在 RunPod Pod 內直接下載模型到掛載的 Network Volume。
+- 預設只下載 `z-image-core`，不做全下載。
+- 可用 `--target` 精選下載、`--all` 全下載、`--force` 強制重抓、`--volume-root` 指定 volume 路徑。
+- 已存在檔案會自動跳過，適合重複執行與增量更新。
+- 新增文件 `docs/custom/volume-bootstrap-zh-tw.md` 說明操作流程。
+- 更新 `src/extra_model_paths.yaml`，加入 `diffusion_models`、`text_encoders`、`model_patches` 映射，確保 z-image 模型可從 volume 被 ComfyUI 掃描。
+- 腳本移入專用目錄 `scripts/volume/`，避免與其他 scripts 混在同一層。
+- `scripts/volume/` 進一步重構：入口、函式庫（`lib/`）、目標資料（`targets/`）分離。
+- 新增 `scripts/volume/check.sh`（語法/lint/格式/smoke 一鍵檢查）與 `scripts/volume/test-smoke.sh`。
+- 後續每次修改 volume 相關 shell，固定執行 `./scripts/volume/check.sh`。
+- 修正為 bash 3 相容寫法（移除 `declare -n`/新式陣列依賴），可在 macOS 預設 bash 下執行。

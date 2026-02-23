@@ -15,12 +15,14 @@
 
 決策：
 
-- 目前只安裝 z-image-turbo 所需模型，不打包其他模型。
+- 目前只使用 z-image-turbo 所需模型，不打包其他模型。
+- 採用 pure volume-first：模型不放 image，統一放 Network Volume。
 
 原因：
 
 - 現階段目標單純，先確認端到端部署穩定。
 - 降低 image 體積與 build 時間。
+- 模型可獨立更新，不需重建 image。
 
 ## 2026-02-23: 先用 RunPod UI，暫緩 Pulumi
 
