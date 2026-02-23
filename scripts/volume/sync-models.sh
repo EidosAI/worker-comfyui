@@ -16,6 +16,7 @@ VOLUME_ROOT="/workspace"
 FORCE=false
 LIST_ONLY=false
 DOWNLOAD_ALL=false
+ESTIMATE_ONLY=false
 declare -a SELECTED_TARGETS=()
 declare -a QUEUE=()
 
@@ -32,6 +33,7 @@ Options:
   --volume-root <path>    Network volume root path. Default: /workspace
   --target <name>         Add a target group. Repeatable.
   --all                   Download every target group.
+  --estimate              Show estimated download size only (no download).
   --force                 Re-download even if file already exists.
   --list                  Print available targets and exit.
   -h, --help              Show this help.
@@ -52,6 +54,9 @@ Examples:
   # Download every target group
   ${SCRIPT_NAME} --all
 
+  # Estimate storage / download size only
+  ${SCRIPT_NAME} --all --estimate
+
 Notes:
   - Files are written under: <volume-root>/models/...
   - Set HF_TOKEN or HUGGINGFACE_ACCESS_TOKEN if private downloads are needed.
@@ -71,6 +76,10 @@ while [[ $# -gt 0 ]]; do
 		;;
 	--all)
 		DOWNLOAD_ALL=true
+		shift
+		;;
+	--estimate)
+		ESTIMATE_ONLY=true
 		shift
 		;;
 	--force)
@@ -141,6 +150,34 @@ for target in "${SELECTED_TARGETS[@]}"; do
 	done < <(print_target_items "${target}")
 done
 
+if [[ "${ESTIMATE_ONLY}" == "true" ]]; then
+	total_size=0
+	unknown_size_count=0
+	log "Estimate only mode (no download)"
+	for item in "${QUEUE[@]}"; do
+		relative_path="${item%%|*}"
+		rest="${item#*|}"
+		url="${rest%%|*}"
+		size_bytes="${rest##*|}"
+		if [[ "${size_bytes}" =~ ^[0-9]+$ ]] && [[ "${size_bytes}" -gt 0 ]]; then
+			total_size=$((total_size + size_bytes))
+			log "  - ${relative_path} ($(format_bytes "${size_bytes}"))"
+		else
+			unknown_size_count=$((unknown_size_count + 1))
+			log "  - ${relative_path} (size unknown)"
+		fi
+		# Keep shellcheck aware these vars are intentionally read.
+		: "${url}"
+	done
+	echo
+	log "Total files: ${#QUEUE[@]}"
+	log "Known size total: $(format_bytes "${total_size}") (${total_size} bytes)"
+	if [[ "${unknown_size_count}" -gt 0 ]]; then
+		log "Unknown-size files: ${unknown_size_count}"
+	fi
+	exit 0
+fi
+
 success=0
 skipped=0
 failed=0
@@ -150,7 +187,8 @@ if [[ ${#QUEUE[@]} -eq 0 ]]; then
 else
 	for item in "${QUEUE[@]}"; do
 		relative_path="${item%%|*}"
-		url="${item#*|}"
+		rest="${item#*|}"
+		url="${rest%%|*}"
 		out_path="${VOLUME_ROOT}/${relative_path}"
 
 		mkdir -p "$(dirname "$out_path")"

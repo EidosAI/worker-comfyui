@@ -44,5 +44,5 @@ print_target_items() {
 		exit 1
 	fi
 
-	jq -r --arg t "${target}" '.targets[$t].files[] | "\(.path)|\(.url)"' "${MANIFEST_FILE}"
+	jq -r --arg t "${target}" '.targets[$t].files[] | "\(.path)|\(.url)|\(.size_bytes // 0)"' "${MANIFEST_FILE}"
 }

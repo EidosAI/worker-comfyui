@@ -21,6 +21,7 @@
 - Smoke test：`scripts/volume/test-smoke.sh`
 - 函式庫：`scripts/volume/lib/*.sh`
 - 模型清單：`scripts/volume/targets/manifest.json`
+  - 每個檔案可記錄 `size_bytes`，供預估模式計算總容量
 
 ## 每次改 shell 後的檢查流程（固定）
 
@@ -71,6 +72,13 @@
 
 ```bash
 ./scripts/volume/sync-models.sh --all
+```
+
+只做容量預估（不下載）：
+
+```bash
+./scripts/volume/sync-models.sh --estimate
+./scripts/volume/sync-models.sh --all --estimate
 ```
 
 指定 volume root（若不是 `/workspace`）：

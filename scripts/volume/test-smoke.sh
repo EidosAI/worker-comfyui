@@ -25,6 +25,11 @@ MOCK_DOWNLOAD=true "${SYNC_SCRIPT}" --volume-root "${TMP_DIR}" >/dev/null
 test -s "${TMP_DIR}/models/text_encoders/qwen_3_4b.safetensors"
 test -s "${TMP_DIR}/models/diffusion_models/z_image_turbo_bf16.safetensors"
 
+echo "smoke: estimate mode"
+estimate_output="$("${SYNC_SCRIPT}" --target z-image-core --estimate)"
+assert_contains "${estimate_output}" "Estimate only mode"
+assert_contains "${estimate_output}" "Known size total"
+
 echo "smoke: unknown target should fail"
 set +e
 unknown_output="$("${SYNC_SCRIPT}" --target not-a-target 2>&1)"
