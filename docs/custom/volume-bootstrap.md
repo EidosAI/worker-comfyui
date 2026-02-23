@@ -13,6 +13,11 @@
 1. 建一台暫時用的 RunPod CPU Pod（GPU 也可）。
 2. Pod 掛上你要給 serverless endpoint 使用的同一顆 Network Volume。
 3. 進入 Pod shell，確認 volume 路徑（通常是 `/workspace`）。
+4. 安裝 `jq`（腳本用它讀取 `manifest.json`）：
+
+```bash
+apt-get update && apt-get install -y jq
+```
 
 ## 腳本位置
 
