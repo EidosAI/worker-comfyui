@@ -115,4 +115,6 @@ apt-get update && apt-get install -y jq
 ## 補充
 
 - 腳本會自動選 downloader：`aria2c` > `wget` > `curl`。
-- 若是私有模型，可設定 `HF_TOKEN` 或 `HUGGINGFACE_ACCESS_TOKEN`。
+- 若是私有/受限模型（例如 gated HF repo），請設定：
+  - `HUGGINGFACE_ACCESS_TOKEN`
+- 下載失敗時腳本會立即停止（fail-fast），且不會把 0-byte 檔案標記為成功。

@@ -59,7 +59,7 @@ Examples:
 
 Notes:
   - Files are written under: <volume-root>/models/...
-  - Set HF_TOKEN or HUGGINGFACE_ACCESS_TOKEN if private downloads are needed.
+  - Set HUGGINGFACE_ACCESS_TOKEN if private downloads are needed.
   - Set MOCK_DOWNLOAD=true to skip real downloads (for smoke tests).
 EOF
 }
@@ -198,6 +198,10 @@ else
 			skipped=$((skipped + 1))
 			continue
 		fi
+		if [[ -e "$out_path" && ! -s "$out_path" ]]; then
+			log "[warn] ${relative_path} exists but is empty; removing stale file."
+			rm -f "$out_path"
+		fi
 
 		log "[dl]   ${relative_path}"
 		if download_file "$url" "$out_path"; then
@@ -205,6 +209,9 @@ else
 		else
 			err "[fail] ${relative_path}"
 			failed=$((failed + 1))
+			echo
+			log "Done. success=${success} skipped=${skipped} failed=${failed}"
+			exit 1
 		fi
 	done
 fi

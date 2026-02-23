@@ -57,3 +57,10 @@
   - `models/vae/flux2-vae.safetensors`
 - `sync-models.sh` 預設 target 改為同時下載 `flux2-klein-9b-distilled` + `z-image-core`。
 - 注意：`flux-2-klein-9b-fp8.safetensors` 來自 gated repo（BFL），需先在 Hugging Face 接受授權。
+- `scripts/volume/lib/downloader.sh` 調整：
+  - 統一只讀取 `HUGGINGFACE_ACCESS_TOKEN`（不再支援 `HF_TOKEN`/`HUGGINGFACE_TOKEN`）。
+  - 下載改為先寫暫存檔再原子覆蓋，避免失敗留下 0-byte 正式檔。
+  - 若下載結果為空檔，視為失敗並提示檢查 HF token / 權限。
+- `scripts/volume/sync-models.sh` 調整：
+  - 遇到單檔下載失敗立即退出（fail-fast），不再默默繼續。
+  - 若偵測到既有 0-byte 檔案，先刪除再重抓，避免把壞檔當既存成果。
