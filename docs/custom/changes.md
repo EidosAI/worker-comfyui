@@ -35,7 +35,7 @@
 - 預設只下載 `z-image-core`，不做全下載。
 - 可用 `--target` 精選下載、`--all` 全下載、`--force` 強制重抓、`--volume-root` 指定 volume 路徑。
 - 已存在檔案會自動跳過，適合重複執行與增量更新。
-- 新增文件 `docs/custom/volume-bootstrap-zh-tw.md` 說明操作流程。
+- 新增文件 `docs/custom/volume-bootstrap.md` 說明操作流程。
 - 更新 `src/extra_model_paths.yaml`，加入 `diffusion_models`、`text_encoders`、`model_patches` 映射，確保 z-image 模型可從 volume 被 ComfyUI 掃描。
 - 腳本移入專用目錄 `scripts/volume/`，避免與其他 scripts 混在同一層。
 - `scripts/volume/` 進一步重構：入口、函式庫（`lib/`）、目標資料（`targets/`）分離。

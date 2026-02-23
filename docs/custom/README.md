@@ -6,8 +6,8 @@
 
 - `changes.md`: 變更紀錄（每次調整都要補）
 - `decisions.md`: 技術決策與理由
-- `deploy-runpod-ui-zh-tw.md`: 使用 RunPod 網站 UI 的部署步驟（繁中）
-- `volume-bootstrap-zh-tw.md`: 用 Pod 直接把模型下載到 Network Volume（繁中）
+- `deploy-runpod-ui.md`: 使用 RunPod 網站 UI 的部署步驟（繁中）
+- `volume-bootstrap.md`: 用 Pod 直接把模型下載到 Network Volume（繁中）
 
 ## 維護規則
 
