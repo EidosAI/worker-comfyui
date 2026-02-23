@@ -28,6 +28,8 @@
 - `.runpod/README.md` 維持 upstream 內容，只加短註記導引到 `docs/custom/`。
 - 規則：fork-specific 細節優先寫在 `docs/custom/`，避免重寫 `.runpod/README.md` 全文。
 - `basic_test` 進一步降載：`512x512`、`steps=4`，並將 timeout 從 `300000` 提高到 `900000`，降低 cold start + polling 導致的逾時誤判。
+- `basic_test` 改為不依賴模型/volume 的 smoke test（`LoadImage -> SaveImage`），避免 build/test 階段因未掛載 volume 而失敗。
+- `basic_test` timeout 調整為 `180000`，測試應更快完成與回報。
 
 ### Network Volume bootstrap script
 
