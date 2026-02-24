@@ -17,6 +17,15 @@
   - `docs/custom/workflows/wan22/source-ui-wan22-lx2v-gguf.json`（上游 UI workflow）
   - `docs/custom/workflows/wan22/source-api-wan22-lx2v-gguf.json`（API 匯出版）
   - 內含來源連結與 SHA256，供後續更新/回溯。
+- `docs/custom/research/wan-2.2-i2v.md` 新增「極速目標參考（待驗證）」：
+  - 記錄 https://zhuanlan.zhihu.com/p/1981363125866481093
+  - 作為後續 1:1 即時生成方向的研究入口。
+  - 補上圖表的完整數據與解讀（H100/5090/4090 在 cfg、no cfg、fp8、4-step 各階段秒數），並新增可執行 A/B 實驗清單。
+- `scripts/volume/targets/manifest.json` 新增 target：`wan2.2-i2v-a14b-fp8-lightx2v-4step`：
+  - 下載 Wan2.2 I2V high/low noise `fp8_scaled` 本體
+  - 搭配 `umt5_xxl_fp8_e4m3fn_scaled.safetensors`、`wan_2.1_vae.safetensors`
+  - 搭配 `lightx2v/Wan2.2-Distill-Loras` high/low 4-step LoRA
+- `docs/custom/volume-bootstrap.md` 補上上述新 target 的使用指令與檔案清單。
 
 ## 2026-02-23
 

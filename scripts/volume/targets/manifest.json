@@ -55,6 +55,41 @@
         }
       ]
     },
+    "wan2.2-i2v-a14b-fp8-lightx2v-4step": {
+      "description": "Wan2.2 I2V A14B fp8-scaled core + Lightx2v 4-step (high/low noise LoRA)",
+      "files": [
+        {
+          "path": "models/diffusion_models/wan2.2_i2v_high_noise_14B_fp8_scaled.safetensors",
+          "url": "https://huggingface.co/Comfy-Org/Wan_2.2_ComfyUI_Repackaged/resolve/main/split_files/diffusion_models/wan2.2_i2v_high_noise_14B_fp8_scaled.safetensors",
+          "size_bytes": 14294742832
+        },
+        {
+          "path": "models/diffusion_models/wan2.2_i2v_low_noise_14B_fp8_scaled.safetensors",
+          "url": "https://huggingface.co/Comfy-Org/Wan_2.2_ComfyUI_Repackaged/resolve/main/split_files/diffusion_models/wan2.2_i2v_low_noise_14B_fp8_scaled.safetensors",
+          "size_bytes": 14294742832
+        },
+        {
+          "path": "models/text_encoders/umt5_xxl_fp8_e4m3fn_scaled.safetensors",
+          "url": "https://huggingface.co/Comfy-Org/Wan_2.2_ComfyUI_Repackaged/resolve/main/split_files/text_encoders/umt5_xxl_fp8_e4m3fn_scaled.safetensors",
+          "size_bytes": 6735906897
+        },
+        {
+          "path": "models/vae/wan_2.1_vae.safetensors",
+          "url": "https://huggingface.co/Comfy-Org/Wan_2.2_ComfyUI_Repackaged/resolve/main/split_files/vae/wan_2.1_vae.safetensors",
+          "size_bytes": 253815318
+        },
+        {
+          "path": "models/loras/wan2.2_i2v_A14b_high_noise_lora_rank64_lightx2v_4step_1022.safetensors",
+          "url": "https://huggingface.co/lightx2v/Wan2.2-Distill-Loras/resolve/main/wan2.2_i2v_A14b_high_noise_lora_rank64_lightx2v_4step_1022.safetensors",
+          "size_bytes": 634645944
+        },
+        {
+          "path": "models/loras/wan2.2_i2v_A14b_low_noise_lora_rank64_lightx2v_4step_1022.safetensors",
+          "url": "https://huggingface.co/lightx2v/Wan2.2-Distill-Loras/resolve/main/wan2.2_i2v_A14b_low_noise_lora_rank64_lightx2v_4step_1022.safetensors",
+          "size_bytes": 739472104
+        }
+      ]
+    },
     "wan2.2-i2v-lightx2v-4step-lora-only": {
       "description": "Lightx2v 4-step LoRA only (high/low noise), for GGUF-based WAN2.2 workflows",
       "files": [
