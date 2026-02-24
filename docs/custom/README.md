@@ -8,6 +8,7 @@
 - `decisions.md`: 技術決策與理由
 - `deploy-runpod-ui.md`: 使用 RunPod 網站 UI 的部署步驟（繁中）
 - `volume-bootstrap.md`: 用 Pod 直接把模型下載到 Network Volume（繁中）
+- `research/README.md`: 模型與工作流研究索引（分主題文件）
 
 ## 維護規則
 

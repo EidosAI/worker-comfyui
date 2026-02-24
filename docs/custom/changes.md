@@ -1,5 +1,18 @@
 # Change Log (EidosAI)
 
+## 2026-02-24
+
+### Research docs split
+
+- 研究筆記由單一檔案拆分為主題化文件，避免資訊混在一起：
+  - `docs/custom/research/README.md`
+  - `docs/custom/research/wan-2.2-i2v.md`
+  - `docs/custom/research/z-image.md`
+  - `docs/custom/research/flux2-klein.md`
+  - `docs/custom/research/comfy-core.md`
+- `docs/custom/model-research-notes.md` 改為入口頁，只保留導引連結。
+- `docs/custom/README.md` 增加 `research/README.md` 索引項目。
+
 ## 2026-02-23
 
 ### Docker build strategy
