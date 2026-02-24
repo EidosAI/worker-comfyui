@@ -7,6 +7,12 @@
 - 官方模型/LoRA 集合：https://huggingface.co/collections/Lightricks/ltx-2
 - Comfy 官方教學頁：https://docs.comfy.org/tutorials/video/ltx/ltx-2
 
+## 社群實戰來源（中文）
+
+- Bilibili 影片：`LTX-2：全新开源视频生成模型，能在本地生成自配音的1080P视频`
+  - 連結：https://www.bilibili.com/video/BV1PfkGBSEso/
+  - 用途：補充中文實戰流程與節點搭配經驗（非官方，但有實操價值）。
+
 ## LTX-2 是什麼
 
 - LTX-2 是 Lightricks 的 19B 音視訊（audio+video）基礎模型。
@@ -79,6 +85,59 @@ Comfy 官方頁把 LTX-2 定位為：
   - https://raw.githubusercontent.com/Comfy-Org/workflow_templates/refs/heads/main/templates/video_ltx2_canny_to_video.json
 - Pose:
   - https://raw.githubusercontent.com/Comfy-Org/workflow_templates/refs/heads/main/templates/video_ltx2_pose_to_video.json
+
+## 社群影片提到的節點（待驗證）
+
+以下來自上方 B 站影片截圖內容，作為我們後續擴充 LTX-2 工作流的候選：
+
+1. `KJ Nodes`
+- 影片描述：提供獨立 VAE 載入與圖像處理等功能。
+- 用途：可能用於補強前後處理與載入彈性。
+
+2. `Mie Nodes`
+- 影片描述：可利用大語言模型生成 LTX-2 提示詞。
+- 用途：偏 prompt 輔助與自動化提示詞生成。
+
+3. `Impact Pack`
+- 影片描述：可用 `Execution Order Controller` 控制執行順序，減少 OOM 機率。
+- 用途：長流程或高負載時的穩定性輔助。
+
+4. `RES4LYF`
+- 影片描述：支援包含 `res_2s` 在內的多種採樣器。
+- 用途：採樣策略與速度/品質折衷實驗。
+
+5. `ComfyUI-LTXVideo`
+- 影片描述：體驗更多 LTX-2 相關功能。
+- 用途：LTX-2 專用/擴充節點整合入口。
+
+備註：
+- 以上屬社群經驗，不等同官方最小依賴。
+- 導入前要做最小化 A/B：先驗證速度收益，再驗證品質與穩定性。
+
+## 社群模型補充（你剛提供）
+
+### 1) MachineDelusions：LTX-2 Image2Video Adapter LoRA
+- 連結：https://huggingface.co/MachineDelusions/LTX-2_Image2Video_Adapter_LoRa
+- 定位：LTX-2 的 I2V 強化 LoRA（高 rank，模型卡寫 rank=256）。
+- 模型卡重點：
+  - 目標是提升 I2V 的首圖貼合度與運動連貫性。
+  - 訓練資料宣稱約 30,000 影片。
+  - 註記「未明確訓練音訊」，但可能造成音訊行為偏移。
+- 對我們的意義：
+  - 適合拿來改善「I2V 人臉跑掉/動作凍結」問題。
+  - 若要保守，先從較低強度起測，觀察畫面與音訊是否同時可接受。
+
+### 2) Phr00t：LTX2-Rapid-Merges
+- 連結：https://huggingface.co/Phr00t/LTX2-Rapid-Merges
+- 定位：社群「快速導向」FP8 合併模型與大型 workflow 集合（T2V/I2V/首尾幀等）。
+- 模型卡重點（作者自述）：
+  - 屬實驗性 FP8 merges。
+  - 推薦搭配其 workflow 使用，並提醒有不少坑點。
+  - 提到部分版本已混入 I2V Adapter（保留音訊部分避免退化）。
+  - 作者表示逐步停止維護，並建議參考合併腳本自行產生。
+- 對我們的意義：
+  - 可以作為「極速實戰流程」參考來源。
+  - 但不建議直接當長期生產基線；應拆成可重現子配置做 A/B（例如 sampler、sigmas、LoRA 組合）。
 
 ## Prompt 規範（Comfy 官方頁重點）
 

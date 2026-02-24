@@ -34,6 +34,13 @@
   - 納入官方能力清單（T2V/I2V/V2V、控制、keyframe、upscaler）
   - 納入官方模板 workflow 下載連結（t2v/i2v/distilled/canny/depth/pose）
   - 納入官方 prompt 建議（時間順序描述、200 詞內）
+- `docs/custom/research/ltx-2.md` 補充中文社群實戰來源：
+  - 新增 Bilibili 影片（BV1PfkGBSEso）連結與定位。
+  - 新增影片推薦節點清單與用途註記：`KJ Nodes`、`Mie Nodes`、`Impact Pack`、`RES4LYF`、`ComfyUI-LTXVideo`。
+- `docs/custom/research/ltx-2.md` 補充兩個社群模型來源：
+  - `MachineDelusions/LTX-2_Image2Video_Adapter_LoRa`（I2V adapter LoRA）
+  - `Phr00t/LTX2-Rapid-Merges`（快速導向 merges + workflow）
+  - 並新增「可用價值 vs 風險」註記，供後續導入決策。
 - `docs/custom/research/README.md` 新增 LTX-2 索引項目。
 
 ## 2026-02-23
