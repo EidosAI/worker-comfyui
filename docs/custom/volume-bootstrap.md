@@ -100,6 +100,7 @@ apt-get update && apt-get install -y jq
 - `models/unet/wan2.2_i2v_low_noise_14B_Q4_K_M.gguf`
 - `models/text_encoders/umt5_xxl_fp16.safetensors`
 - `models/vae/wan2.2_vae.safetensors`
+- `models/clip_vision/clip_vision_h.safetensors`
 
 ## 可選參數
 
@@ -137,6 +138,7 @@ apt-get update && apt-get install -y jq
 - `models/unet/wan2.2_i2v_low_noise_14B_Q4_K_M.gguf`
 - `models/text_encoders/umt5_xxl_fp16.safetensors`
 - `models/vae/wan2.2_vae.safetensors`
+- `models/clip_vision/clip_vision_h.safetensors`
 
 全下載（只有帶 `--all` 才會做）：
 

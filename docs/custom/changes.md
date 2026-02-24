@@ -104,3 +104,5 @@
 - `wan2.2-i2v-a14b-lightning-gguf-q4km` 下載來源改為 `bullerwins/Wan2.2-I2V-A14B-GGUF`，並使用其原始檔名：
   - `wan2.2_i2v_high_noise_14B_Q4_K_M.gguf`
   - `wan2.2_i2v_low_noise_14B_Q4_K_M.gguf`
+- `wan2.2-i2v-a14b-lightning-gguf-q4km` 補上 I2V workflow 常用依賴：
+  - `models/clip_vision/clip_vision_h.safetensors`
