@@ -71,17 +71,17 @@
       ]
     },
     "wan2.2-i2v-a14b-lightning-gguf-q4km": {
-      "description": "Wan2.2 I2V A14B Lightning GGUF Q4_K_M (H/L) + umt5 fp16 + wan2.2 vae",
+      "description": "Wan2.2 I2V A14B GGUF Q4_K_M (bullerwins high/low) + umt5 fp16 + wan2.2 vae",
       "files": [
         {
-          "path": "models/unet/Wan22-I2V_A14B-Lightning-H-Q4_K_M.gguf",
-          "url": "https://huggingface.co/Zuntan/Wan22-I2V_A14B-Lightning-GGUF/resolve/main/Wan22-I2V_A14B-Lightning-H-Q4_K_M.gguf",
-          "size_bytes": 9651739136
+          "path": "models/unet/wan2.2_i2v_high_noise_14B_Q4_K_M.gguf",
+          "url": "https://huggingface.co/bullerwins/Wan2.2-I2V-A14B-GGUF/resolve/main/wan2.2_i2v_high_noise_14B_Q4_K_M.gguf",
+          "size_bytes": 9651728896
         },
         {
-          "path": "models/unet/Wan22-I2V_A14B-Lightning-L-Q4_K_M.gguf",
-          "url": "https://huggingface.co/Zuntan/Wan22-I2V_A14B-Lightning-GGUF/resolve/main/Wan22-I2V_A14B-Lightning-L-Q4_K_M.gguf",
-          "size_bytes": 9651739136
+          "path": "models/unet/wan2.2_i2v_low_noise_14B_Q4_K_M.gguf",
+          "url": "https://huggingface.co/bullerwins/Wan2.2-I2V-A14B-GGUF/resolve/main/wan2.2_i2v_low_noise_14B_Q4_K_M.gguf",
+          "size_bytes": 9651728896
         },
         {
           "path": "models/text_encoders/umt5_xxl_fp16.safetensors",

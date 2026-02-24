@@ -96,8 +96,8 @@ apt-get update && apt-get install -y jq
 - `models/loras/wan2.2_i2v_A14b_low_noise_lora_rank64_lightx2v_4step_1022.safetensors`
 
 `wan2.2-i2v-a14b-lightning-gguf-q4km`
-- `models/unet/Wan22-I2V_A14B-Lightning-H-Q4_K_M.gguf`
-- `models/unet/Wan22-I2V_A14B-Lightning-L-Q4_K_M.gguf`
+- `models/unet/wan2.2_i2v_high_noise_14B_Q4_K_M.gguf`
+- `models/unet/wan2.2_i2v_low_noise_14B_Q4_K_M.gguf`
 - `models/text_encoders/umt5_xxl_fp16.safetensors`
 - `models/vae/wan2.2_vae.safetensors`
 
@@ -133,8 +133,8 @@ apt-get update && apt-get install -y jq
 - `models/loras/wan2.2_i2v_A14b_low_noise_lora_rank64_lightx2v_4step_1022.safetensors`
 
 `wan2.2-i2v-a14b-lightning-gguf-q4km` 包含：
-- `models/unet/Wan22-I2V_A14B-Lightning-H-Q4_K_M.gguf`
-- `models/unet/Wan22-I2V_A14B-Lightning-L-Q4_K_M.gguf`
+- `models/unet/wan2.2_i2v_high_noise_14B_Q4_K_M.gguf`
+- `models/unet/wan2.2_i2v_low_noise_14B_Q4_K_M.gguf`
 - `models/text_encoders/umt5_xxl_fp16.safetensors`
 - `models/vae/wan2.2_vae.safetensors`
 
