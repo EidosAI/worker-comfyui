@@ -26,6 +26,15 @@
   - 搭配 `umt5_xxl_fp8_e4m3fn_scaled.safetensors`、`wan_2.1_vae.safetensors`
   - 搭配 `lightx2v/Wan2.2-Distill-Loras` high/low 4-step LoRA
 - `docs/custom/volume-bootstrap.md` 補上上述新 target 的使用指令與檔案清單。
+- 新增 `docs/custom/research/ltx-2.md`：
+  - 彙整 LTX-2 官方模型卡、官方 GitHub README、官方 collection。
+  - 整理可選版本（dev/dev-fp8/dev-fp4/distilled/distilled-lora/upscalers）。
+  - 補上「速度優先但盡量不犧牲太多品質」的嘗試順序與 A/B 實驗矩陣。
+- `docs/custom/research/ltx-2.md` 補充 Comfy 官方教程資訊：
+  - 納入官方能力清單（T2V/I2V/V2V、控制、keyframe、upscaler）
+  - 納入官方模板 workflow 下載連結（t2v/i2v/distilled/canny/depth/pose）
+  - 納入官方 prompt 建議（時間順序描述、200 詞內）
+- `docs/custom/research/README.md` 新增 LTX-2 索引項目。
 
 ## 2026-02-23
 

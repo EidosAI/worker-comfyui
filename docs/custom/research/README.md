@@ -3,6 +3,7 @@
 這個資料夾是模型與 Comfy 工作流的主索引。每個主題單獨一份文件，避免資訊混在一起。
 
 - WAN 2.2 I2V：`docs/custom/research/wan-2.2-i2v.md`
+- LTX-2：`docs/custom/research/ltx-2.md`
 - Z-Image：`docs/custom/research/z-image.md`
 - FLUX 2 Klein：`docs/custom/research/flux2-klein.md`
 - Comfy 核心與節點相容性：`docs/custom/research/comfy-core.md`
