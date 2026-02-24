@@ -88,6 +88,19 @@ RUN chmod +x /usr/local/bin/comfy-node-install
 # Prevent pip from asking for confirmation during uninstall steps in custom nodes
 ENV PIP_NO_INPUT=1
 
+# Install WAN I2V + GGUF required nodes plus commonly used utility packs
+# to reduce rebuild frequency when workflows expand.
+RUN comfy-node-install \
+    ComfyUI-WanVideoWrapper \
+    ComfyUI-GGUF \
+    comfyui-videohelpersuite \
+    comfyui-kjnodes \
+    comfyui_essentials \
+    comfyui-custom-scripts \
+    comfyui-impact-pack \
+    rgthree-comfy \
+    comfyui-easy-use
+
 # Copy helper script to switch Manager network mode at container start
 COPY scripts/comfy-manager-set-mode.sh /usr/local/bin/comfy-manager-set-mode
 RUN chmod +x /usr/local/bin/comfy-manager-set-mode

@@ -67,3 +67,33 @@
 - `scripts/volume/sync-models.sh` 調整：
   - 遇到單檔下載失敗立即退出（fail-fast），不再默默繼續。
   - 若偵測到既有 0-byte 檔案，先刪除再重抓，避免把壞檔當既存成果。
+- `scripts/volume/targets/manifest.json` 新增 target：`wan2.2-i2v-a14b-lightx2v-4step`，內容包含：
+  - Wan2.2 I2V A14B `high_noise/low_noise`（fp16）
+  - `umt5_xxl_fp16.safetensors`
+  - `wan2.2_vae.safetensors`
+  - Lightx2v 4-step `high_noise/low_noise` LoRA
+- `Dockerfile` 新增最小 custom nodes 安裝（僅保留 I2V + GGUF 需要）：
+  - `ComfyUI-WanVideoWrapper`
+  - `ComfyUI-GGUF`
+  - `comfyui-videohelpersuite`
+- `scripts/volume/targets/manifest.json` 新增 target：`wan2.2-i2v-a14b-lightning-gguf-q4km`，內容包含：
+  - `Wan22-I2V_A14B-Lightning-H-Q4_K_M.gguf`
+  - `Wan22-I2V_A14B-Lightning-L-Q4_K_M.gguf`
+  - `umt5_xxl_fp16.safetensors`
+  - `wan2.2_vae.safetensors`
+- `docs/custom/volume-bootstrap.md` 補上 WAN2.2 + Lightx2v 的 target 指令與檔案清單。
+- `Dockerfile` custom nodes 擴充為：
+  - `ComfyUI-WanVideoWrapper`
+  - `ComfyUI-GGUF`
+  - `comfyui-videohelpersuite`
+  - `comfyui-kjnodes`
+  - `comfyui_essentials`
+  - `comfyui-custom-scripts`
+  - `comfyui-impact-pack`
+  - `rgthree-comfy`
+  - `comfyui-easy-use`
+- `scripts/volume/sync-models.sh` 預設 target 更新為 4 組（不帶參數時）：
+  - `flux2-klein-9b-distilled`
+  - `z-image-core`
+  - `wan2.2-i2v-a14b-lightx2v-4step`
+  - `wan2.2-i2v-a14b-lightning-gguf-q4km`

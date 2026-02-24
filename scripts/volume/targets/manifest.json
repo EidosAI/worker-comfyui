@@ -20,6 +20,66 @@
         }
       ]
     },
+    "wan2.2-i2v-a14b-lightx2v-4step": {
+      "description": "Wan2.2 I2V A14B fp16 core + Lightx2v 4-step (high/low noise LoRA)",
+      "files": [
+        {
+          "path": "models/diffusion_models/wan2.2_i2v_high_noise_14B_fp16.safetensors",
+          "url": "https://huggingface.co/Comfy-Org/Wan_2.2_ComfyUI_Repackaged/resolve/main/split_files/diffusion_models/wan2.2_i2v_high_noise_14B_fp16.safetensors",
+          "size_bytes": 28577914792
+        },
+        {
+          "path": "models/diffusion_models/wan2.2_i2v_low_noise_14B_fp16.safetensors",
+          "url": "https://huggingface.co/Comfy-Org/Wan_2.2_ComfyUI_Repackaged/resolve/main/split_files/diffusion_models/wan2.2_i2v_low_noise_14B_fp16.safetensors",
+          "size_bytes": 28577914792
+        },
+        {
+          "path": "models/text_encoders/umt5_xxl_fp16.safetensors",
+          "url": "https://huggingface.co/Comfy-Org/Wan_2.2_ComfyUI_Repackaged/resolve/main/split_files/text_encoders/umt5_xxl_fp16.safetensors",
+          "size_bytes": 11366399385
+        },
+        {
+          "path": "models/vae/wan2.2_vae.safetensors",
+          "url": "https://huggingface.co/Comfy-Org/Wan_2.2_ComfyUI_Repackaged/resolve/main/split_files/vae/wan2.2_vae.safetensors",
+          "size_bytes": 1409400960
+        },
+        {
+          "path": "models/loras/wan2.2_i2v_A14b_high_noise_lora_rank64_lightx2v_4step_1022.safetensors",
+          "url": "https://huggingface.co/lightx2v/Wan2.2-Distill-Loras/resolve/main/wan2.2_i2v_A14b_high_noise_lora_rank64_lightx2v_4step_1022.safetensors",
+          "size_bytes": 634645944
+        },
+        {
+          "path": "models/loras/wan2.2_i2v_A14b_low_noise_lora_rank64_lightx2v_4step_1022.safetensors",
+          "url": "https://huggingface.co/lightx2v/Wan2.2-Distill-Loras/resolve/main/wan2.2_i2v_A14b_low_noise_lora_rank64_lightx2v_4step_1022.safetensors",
+          "size_bytes": 739472104
+        }
+      ]
+    },
+    "wan2.2-i2v-a14b-lightning-gguf-q4km": {
+      "description": "Wan2.2 I2V A14B Lightning GGUF Q4_K_M (H/L) + umt5 fp16 + wan2.2 vae",
+      "files": [
+        {
+          "path": "models/unet/Wan22-I2V_A14B-Lightning-H-Q4_K_M.gguf",
+          "url": "https://huggingface.co/Zuntan/Wan22-I2V_A14B-Lightning-GGUF/resolve/main/Wan22-I2V_A14B-Lightning-H-Q4_K_M.gguf",
+          "size_bytes": 9651739136
+        },
+        {
+          "path": "models/unet/Wan22-I2V_A14B-Lightning-L-Q4_K_M.gguf",
+          "url": "https://huggingface.co/Zuntan/Wan22-I2V_A14B-Lightning-GGUF/resolve/main/Wan22-I2V_A14B-Lightning-L-Q4_K_M.gguf",
+          "size_bytes": 9651739136
+        },
+        {
+          "path": "models/text_encoders/umt5_xxl_fp16.safetensors",
+          "url": "https://huggingface.co/Comfy-Org/Wan_2.2_ComfyUI_Repackaged/resolve/main/split_files/text_encoders/umt5_xxl_fp16.safetensors",
+          "size_bytes": 11366399385
+        },
+        {
+          "path": "models/vae/wan2.2_vae.safetensors",
+          "url": "https://huggingface.co/Comfy-Org/Wan_2.2_ComfyUI_Repackaged/resolve/main/split_files/vae/wan2.2_vae.safetensors",
+          "size_bytes": 1409400960
+        }
+      ]
+    },
     "z-image-core": {
       "description": "qwen_3_4b + z_image_turbo_bf16 + ae + controlnet patch",
       "files": [
