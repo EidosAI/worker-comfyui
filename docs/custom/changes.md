@@ -12,6 +12,11 @@
   - `docs/custom/research/comfy-core.md`
 - `docs/custom/model-research-notes.md` 改為入口頁，只保留導引連結。
 - `docs/custom/README.md` 增加 `research/README.md` 索引項目。
+- 新增 WAN2.2 workflow 來源追蹤與原始檔保存：
+  - `docs/custom/workflows/wan22/source.md`
+  - `docs/custom/workflows/wan22/source-ui-wan22-lx2v-gguf.json`（上游 UI workflow）
+  - `docs/custom/workflows/wan22/source-api-wan22-lx2v-gguf.json`（API 匯出版）
+  - 內含來源連結與 SHA256，供後續更新/回溯。
 
 ## 2026-02-23
 

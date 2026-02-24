@@ -13,6 +13,11 @@
   - 類型：社群實測討論
   - 重點：對照參數對穩定性與首幀連續性的影響。
 
+本專案已保存可追蹤來源檔（可直接匯入 + API 匯出版）：
+- `docs/custom/workflows/wan22/source.md`
+- `docs/custom/workflows/wan22/source-ui-wan22-lx2v-gguf.json`
+- `docs/custom/workflows/wan22/source-api-wan22-lx2v-gguf.json`
+
 ## Distill / Lightx2v 路線
 - https://huggingface.co/lightx2v/Wan2.2-Distill-Models
   - 類型：Distill 模型路線
