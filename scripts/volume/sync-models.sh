@@ -118,7 +118,7 @@ if [[ ${#SELECTED_TARGETS[@]} -eq 0 ]]; then
 	SELECTED_TARGETS=(
 		"flux2-klein-9b-distilled"
 		"z-image-core"
-		"wan2.2-i2v-a14b-lightx2v-4step"
+		"wan2.2-i2v-lightx2v-4step-lora-only"
 		"wan2.2-i2v-a14b-lightning-gguf-q4km"
 	)
 fi

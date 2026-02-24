@@ -55,6 +55,21 @@
         }
       ]
     },
+    "wan2.2-i2v-lightx2v-4step-lora-only": {
+      "description": "Lightx2v 4-step LoRA only (high/low noise), for GGUF-based WAN2.2 workflows",
+      "files": [
+        {
+          "path": "models/loras/wan2.2_i2v_A14b_high_noise_lora_rank64_lightx2v_4step_1022.safetensors",
+          "url": "https://huggingface.co/lightx2v/Wan2.2-Distill-Loras/resolve/main/wan2.2_i2v_A14b_high_noise_lora_rank64_lightx2v_4step_1022.safetensors",
+          "size_bytes": 634645944
+        },
+        {
+          "path": "models/loras/wan2.2_i2v_A14b_low_noise_lora_rank64_lightx2v_4step_1022.safetensors",
+          "url": "https://huggingface.co/lightx2v/Wan2.2-Distill-Loras/resolve/main/wan2.2_i2v_A14b_low_noise_lora_rank64_lightx2v_4step_1022.safetensors",
+          "size_bytes": 739472104
+        }
+      ]
+    },
     "wan2.2-i2v-a14b-lightning-gguf-q4km": {
       "description": "Wan2.2 I2V A14B Lightning GGUF Q4_K_M (H/L) + umt5 fp16 + wan2.2 vae",
       "files": [

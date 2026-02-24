@@ -72,7 +72,7 @@ apt-get update && apt-get install -y jq
 
 ## 預設行為（固定核心組合）
 
-不帶參數時，預設會下載以下四組：
+不帶參數時，預設會下載以下四組（GGUF + Lightx2v LoRA 為預設）：
 
 ```bash
 ./scripts/volume/sync-models.sh
@@ -91,11 +91,7 @@ apt-get update && apt-get install -y jq
 - `models/vae/ae.safetensors`
 - `models/model_patches/Z-Image-Turbo-Fun-Controlnet-Union.safetensors`
 
-`wan2.2-i2v-a14b-lightx2v-4step`
-- `models/diffusion_models/wan2.2_i2v_high_noise_14B_fp16.safetensors`
-- `models/diffusion_models/wan2.2_i2v_low_noise_14B_fp16.safetensors`
-- `models/text_encoders/umt5_xxl_fp16.safetensors`
-- `models/vae/wan2.2_vae.safetensors`
+`wan2.2-i2v-lightx2v-4step-lora-only`
 - `models/loras/wan2.2_i2v_A14b_high_noise_lora_rank64_lightx2v_4step_1022.safetensors`
 - `models/loras/wan2.2_i2v_A14b_low_noise_lora_rank64_lightx2v_4step_1022.safetensors`
 
@@ -117,13 +113,18 @@ apt-get update && apt-get install -y jq
 
 ```bash
 ./scripts/volume/sync-models.sh --target flux2-klein-9b-distilled
+./scripts/volume/sync-models.sh --target wan2.2-i2v-lightx2v-4step-lora-only
 ./scripts/volume/sync-models.sh --target wan2.2-i2v-a14b-lightx2v-4step
 ./scripts/volume/sync-models.sh --target wan2.2-i2v-a14b-lightning-gguf-q4km
 ./scripts/volume/sync-models.sh --target z-image-nvfp4
 ./scripts/volume/sync-models.sh --target z-image-core --target z-image-qwen-fp8
 ```
 
-`wan2.2-i2v-a14b-lightx2v-4step` 包含：
+`wan2.2-i2v-lightx2v-4step-lora-only` 包含：
+- `models/loras/wan2.2_i2v_A14b_high_noise_lora_rank64_lightx2v_4step_1022.safetensors`
+- `models/loras/wan2.2_i2v_A14b_low_noise_lora_rank64_lightx2v_4step_1022.safetensors`
+
+`wan2.2-i2v-a14b-lightx2v-4step`（原版 fp16，僅手動指定）包含：
 - `models/diffusion_models/wan2.2_i2v_high_noise_14B_fp16.safetensors`
 - `models/diffusion_models/wan2.2_i2v_low_noise_14B_fp16.safetensors`
 - `models/text_encoders/umt5_xxl_fp16.safetensors`

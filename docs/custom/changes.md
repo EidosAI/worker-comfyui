@@ -97,3 +97,7 @@
   - `z-image-core`
   - `wan2.2-i2v-a14b-lightx2v-4step`
   - `wan2.2-i2v-a14b-lightning-gguf-q4km`
+- 新增 target：`wan2.2-i2v-lightx2v-4step-lora-only`（只下載 Lightx2v high/low LoRA）。
+- `scripts/volume/sync-models.sh` 預設 target 再調整：
+  - 預設改為 `GGUF + Lightx2v LoRA`（不含原版 Wan2.2 fp16 base）
+  - 若要原版 Wan2.2 fp16，需手動指定 `--target wan2.2-i2v-a14b-lightx2v-4step`
