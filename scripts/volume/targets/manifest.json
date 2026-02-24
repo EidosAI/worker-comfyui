@@ -71,7 +71,7 @@
       ]
     },
     "wan2.2-i2v-a14b-lightning-gguf-q4km": {
-      "description": "Wan2.2 I2V A14B GGUF Q4_K_M (bullerwins high/low) + umt5 fp16 + wan2.2 vae + clip_vision_h",
+      "description": "Wan2.2 I2V A14B GGUF Q4_K_M (bullerwins high/low) + umt5 fp8 + wan2.1 vae + clip_vision_h",
       "files": [
         {
           "path": "models/unet/wan2.2_i2v_high_noise_14B_Q4_K_M.gguf",
@@ -84,14 +84,14 @@
           "size_bytes": 9651728896
         },
         {
-          "path": "models/text_encoders/umt5_xxl_fp16.safetensors",
-          "url": "https://huggingface.co/Comfy-Org/Wan_2.2_ComfyUI_Repackaged/resolve/main/split_files/text_encoders/umt5_xxl_fp16.safetensors",
-          "size_bytes": 11366399385
+          "path": "models/text_encoders/umt5_xxl_fp8_e4m3fn_scaled.safetensors",
+          "url": "https://huggingface.co/Comfy-Org/Wan_2.2_ComfyUI_Repackaged/resolve/main/split_files/text_encoders/umt5_xxl_fp8_e4m3fn_scaled.safetensors",
+          "size_bytes": 6735906897
         },
         {
-          "path": "models/vae/wan2.2_vae.safetensors",
-          "url": "https://huggingface.co/Comfy-Org/Wan_2.2_ComfyUI_Repackaged/resolve/main/split_files/vae/wan2.2_vae.safetensors",
-          "size_bytes": 1409400960
+          "path": "models/vae/wan_2.1_vae.safetensors",
+          "url": "https://huggingface.co/Comfy-Org/Wan_2.2_ComfyUI_Repackaged/resolve/main/split_files/vae/wan_2.1_vae.safetensors",
+          "size_bytes": 253815318
         },
         {
           "path": "models/clip_vision/clip_vision_h.safetensors",

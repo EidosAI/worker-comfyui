@@ -106,3 +106,6 @@
   - `wan2.2_i2v_low_noise_14B_Q4_K_M.gguf`
 - `wan2.2-i2v-a14b-lightning-gguf-q4km` 補上 I2V workflow 常用依賴：
   - `models/clip_vision/clip_vision_h.safetensors`
+- `wan2.2-i2v-a14b-lightning-gguf-q4km` 的文字編碼器與 VAE 改為官方 I2V 常用組合：
+  - `models/text_encoders/umt5_xxl_fp8_e4m3fn_scaled.safetensors`
+  - `models/vae/wan_2.1_vae.safetensors`
