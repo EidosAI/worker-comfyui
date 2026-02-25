@@ -2,6 +2,14 @@
 
 ## 2026-02-25
 
+### Fill-Nodes install hardening (FL_RIFE missing fix)
+
+- `Dockerfile` 增加 `libopengl0`，避免 `ComfyUI_Fill-Nodes` 的 OpenGL 相關依賴在 runtime 缺少系統庫。
+- `Dockerfile` 在 `comfy-node-install` 之後新增 `ComfyUI_Fill-Nodes` fallback：
+  - 若 `/comfyui/custom_nodes/ComfyUI_Fill-Nodes` 不存在，改用 `git clone --depth 1` 直接安裝。
+  - 若存在 `requirements.txt`，強制執行 `uv pip install -r ...`。
+- 目的：避免 registry 安裝偶發失敗導致 `FL_RIFE`/`FL_IntToFloat` 等 `FL_*` 節點不存在，造成 LTX workflow 在 serverless 上報 `missing_node_type`。
+
 ### LTX2 Phr00t v5 workflow integration
 
 - 新增 workflow 來源追蹤檔：

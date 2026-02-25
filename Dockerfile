@@ -29,6 +29,7 @@ RUN apt-get update && apt-get install -y \
     python3.12-venv \
     git \
     wget \
+    libopengl0 \
     libgl1 \
     libglib2.0-0 \
     libsm6 \
@@ -102,6 +103,16 @@ RUN comfy-node-install \
     comfyui-impact-pack \
     rgthree-comfy \
     comfyui-easy-use
+
+# Registry installs for ComfyUI_Fill-Nodes may intermittently fail in CI/build environments.
+# Ensure FL_* nodes (including FL_RIFE) exist by cloning directly as a fallback.
+RUN if [ ! -d /comfyui/custom_nodes/ComfyUI_Fill-Nodes ]; then \
+      echo "ComfyUI_Fill-Nodes missing after registry install; applying git fallback."; \
+      git clone --depth 1 https://github.com/filliptm/ComfyUI_Fill-Nodes.git /comfyui/custom_nodes/ComfyUI_Fill-Nodes; \
+    fi \
+    && if [ -f /comfyui/custom_nodes/ComfyUI_Fill-Nodes/requirements.txt ]; then \
+      uv pip install -r /comfyui/custom_nodes/ComfyUI_Fill-Nodes/requirements.txt; \
+    fi
 
 # Copy helper script to switch Manager network mode at container start
 COPY scripts/comfy-manager-set-mode.sh /usr/local/bin/comfy-manager-set-mode
