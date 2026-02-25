@@ -294,13 +294,15 @@
   },
   "64": {
     "inputs": {
-      "UNKNOWN": 0,
       "int_value": [
         "55",
         0
       ]
     },
-    "_meta": {}
+    "class_type": "FL_IntToFloat",
+    "_meta": {
+      "title": "FL Int to Float"
+    }
   },
   "67": {
     "inputs": {
@@ -385,7 +387,14 @@
   },
   "102": {
     "inputs": {
-      "UNKNOWN": 1,
+      "num_guides": "2",
+      "num_guides.frame_idx_1": 0,
+      "num_guides.strength_1": [
+        "80",
+        0
+      ],
+      "num_guides.frame_idx_2": -1,
+      "num_guides.strength_2": 1,
       "positive": [
         "20",
         0
@@ -406,16 +415,15 @@
         "28",
         0
       ],
-      "num_guides.strength_1": [
-        "80",
-        0
-      ],
       "num_guides.image_2": [
         "37",
         0
       ]
     },
-    "_meta": {}
+    "class_type": "LTXVAddGuideMulti",
+    "_meta": {
+      "title": "LTXVAddGuideMulti"
+    }
   },
   "103": {
     "inputs": {
@@ -485,17 +493,22 @@
   },
   "122": {
     "inputs": {
-      "UNKNOWN": 4096,
+      "chunks": 4,
+      "dim_threshold": 4096,
       "model": [
         "91",
         0
       ]
     },
-    "_meta": {}
+    "class_type": "LTXVChunkFeedForward",
+    "_meta": {
+      "title": "LTXV Chunk FeedForward"
+    }
   },
   "123": {
     "inputs": {
-      "UNKNOWN": "1,1,0.25,1,1,0.25,1,1",
+      "video_normalization_factors": "1,1,1,1,1,1,1,1",
+      "audio_normalization_factors": "1,1,0.25,1,1,0.25,1,1",
       "noise": [
         "124",
         0
@@ -517,7 +530,10 @@
         0
       ]
     },
-    "_meta": {}
+    "class_type": "LTXVNormalizingSampler",
+    "_meta": {
+      "title": "🅛🅣🅧 LTXV Normalizing Sampler"
+    }
   },
   "124": {
     "inputs": {
@@ -598,17 +614,21 @@
   },
   "138": {
     "inputs": {
-      "UNKNOWN": false,
-      "images": [
-        "133",
-        0
-      ],
+      "ckpt_name": "rife49",
       "multiplier": [
         "139",
         0
+      ],
+      "ensemble": false,
+      "images": [
+        "133",
+        0
       ]
     },
-    "_meta": {}
+    "class_type": "FL_RIFE",
+    "_meta": {
+      "title": "FL RIFE Frame Interpolation"
+    }
   },
   "139": {
     "inputs": {
@@ -621,13 +641,20 @@
   },
   "160": {
     "inputs": {
-      "UNKNOWN": 1,
+      "blocks": "",
+      "video_scale": 1,
+      "audio_scale": 1,
+      "audio_to_video_scale": 1,
+      "video_to_audio_scale": 1,
       "model": [
         "122",
         0
       ]
     },
-    "_meta": {}
+    "class_type": "LTX2AttentionTunerPatch",
+    "_meta": {
+      "title": "LTX2 Attention Tuner Patch"
+    }
   },
   "170": {
     "inputs": {

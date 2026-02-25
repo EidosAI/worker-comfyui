@@ -20,7 +20,7 @@
 
 2. `LTXV-DoAlmostEverything-v3-api.json`
 - 說明：由上面 UI workflow 匯出的 API workflow（可直接送 `/prompt` 類接口）。
-- SHA256: `db95ea67f3524429b7cc519892493574b01314c2bf86495cb53860906b19fd1e`
+- SHA256: `22fd77b344163e90b2bdad26f23192beade24966c43d94780b6cdd7952960f95`
 
 ## ULO 對應
 
