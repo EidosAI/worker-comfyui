@@ -93,7 +93,9 @@ ENV PIP_NO_INPUT=1
 RUN comfy-node-install \
     ComfyUI-WanVideoWrapper \
     ComfyUI-GGUF \
+    ComfyUI-LTXVideo \
     comfyui-videohelpersuite \
+    ComfyUI_Fill-Nodes \
     comfyui-kjnodes \
     comfyui_essentials \
     comfyui-custom-scripts \

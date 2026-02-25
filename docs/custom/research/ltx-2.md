@@ -139,6 +139,52 @@ Comfy 官方頁把 LTX-2 定位為：
   - 可以作為「極速實戰流程」參考來源。
   - 但不建議直接當長期生產基線；應拆成可重現子配置做 A/B（例如 sampler、sigmas、LoRA 組合）。
 
+## 直接採用 Phr00t `sfw/ltx2-phr00tmerge-sfw-v5.safetensors` 的落地方式
+
+你指定的模型：
+- `sfw/ltx2-phr00tmerge-sfw-v5.safetensors`
+- 來源：https://huggingface.co/Phr00t/LTX2-Rapid-Merges
+
+作者已明確提供 workflow（不要自己重編）：
+- `LTXV-DoAlmostEverything-v3.json`
+- 下載（raw）：https://huggingface.co/Phr00t/LTX2-Rapid-Merges/raw/main/LTXV-DoAlmostEverything-v3.json
+
+### 作者 README 明確提到的配套
+
+1. 其他 LTX2 需要模型請參考：
+- https://huggingface.co/Kijai/LTXV2_comfy
+
+2. 文字編碼器建議：
+- https://huggingface.co/Comfy-Org/ltx-2/tree/main/split_files/text_encoders
+- 作者建議使用 fp8-scaled text encoder。
+
+3. workflow 內建註記（Note 節點）列出的必備節點：
+- `Comfy-KJNodes`
+- `Comfy-LTXVideo`
+- `VideoHelperSuite`
+- `Fill-Nodes`
+
+4. workflow 注意事項（作者註記）：
+- `VideoCombine` 的 `save_output` 預設是 `false`，要保存結果時請改為 `true`。
+- 這份 workflow 支援 `I2V / 首尾幀 / T2V`，且含作者收集的最佳化設定。
+
+### 與 I2V Adapter LoRA 的關係
+
+- `sfw v5` 模型卡寫明已混入 `MachineDelusions/LTX-2_Image2Video_Adapter_LoRa`（影片部分）。
+- 因此使用 `v5` 時，通常不需要再額外疊同一顆 I2V Adapter LoRA 做首輪測試。
+- 建議先以「只用 v5 + 作者 workflow」建立基線，再做外掛 LoRA 的增量 A/B。
+
+## 本專案已落地的 Phr00t v5 基線
+
+- workflow 來源追蹤：
+  - `docs/custom/workflows/ltx2/source.md`
+- 本地保存檔案：
+  - `docs/custom/workflows/ltx2/LTXV-DoAlmostEverything-v3.json`
+  - `docs/custom/workflows/ltx2/LTXV-DoAlmostEverything-v3-api.json`
+- volume target（可直接下載）：
+  - `ltx2-phr00t-sfw-v5-i2v`
+  - 定義於 `scripts/volume/targets/manifest.json`
+
 ## Prompt 規範（Comfy 官方頁重點）
 
 官方頁建議：

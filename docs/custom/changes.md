@@ -1,5 +1,34 @@
 # Change Log (EidosAI)
 
+## 2026-02-25
+
+### LTX2 Phr00t v5 workflow integration
+
+- 新增 workflow 來源追蹤檔：
+  - `docs/custom/workflows/ltx2/source.md`
+  - 記錄上游來源、UI/API 檔案 SHA256、與 ULO 對應路徑。
+- 保留 workflow 原始檔（UI + API）：
+  - `docs/custom/workflows/ltx2/LTXV-DoAlmostEverything-v3.json`
+  - `docs/custom/workflows/ltx2/LTXV-DoAlmostEverything-v3-api.json`
+- `scripts/volume/targets/manifest.json` 新增 target：`ltx2-phr00t-sfw-v5-i2v`，包含：
+  - `ltx2-phr00tmerge-sfw-v5.safetensors`
+  - `gemma_3_12B_it_fp8_scaled.safetensors`
+  - `ltx-2-19b-embeddings_connector_distill_bf16.safetensors`
+  - `LTX2_audio_vae_bf16.safetensors`
+  - `LTX2_video_vae_bf16.safetensors`
+- `docs/custom/volume-bootstrap.md` 補上 `ltx2-phr00t-sfw-v5-i2v` 指令與檔案清單。
+- `docs/custom/research/ltx-2.md` 補上「本專案已落地的 Phr00t v5 基線」段落與對應路徑。
+- `Dockerfile` 補上 LTX2 workflow 需要的節點安裝：
+  - `ComfyUI-LTXVideo`
+  - `ComfyUI_Fill-Nodes`
+- `handler.py` 擴充輸出處理：
+  - 除 `images` 外，新增處理 `gifs` / `videos` 輸出鍵。
+  - 輸出結果新增 `media` 陣列（含 `media_kind` / `mime_type`），並保留 `images`（僅 image 子集）相容舊邏輯。
+  - 無輸出狀態改為 `success_no_media`（原本 `success_no_images`）。
+- 新增最小單元測試：
+  - `tests/test_handler_media.py`
+  - 驗證 `infer_mime_type`、`infer_media_kind`、`to_output_entry` 在 base64 與 S3 模式的輸出格式。
+
 ## 2026-02-24
 
 ### Research docs split
@@ -41,6 +70,11 @@
   - `MachineDelusions/LTX-2_Image2Video_Adapter_LoRa`（I2V adapter LoRA）
   - `Phr00t/LTX2-Rapid-Merges`（快速導向 merges + workflow）
   - 並新增「可用價值 vs 風險」註記，供後續導入決策。
+- `docs/custom/research/ltx-2.md` 補上 Phr00t v5 的直接落地方式：
+  - 指定模型 `sfw/ltx2-phr00tmerge-sfw-v5.safetensors`
+  - 記錄作者提供的 workflow `LTXV-DoAlmostEverything-v3.json`（raw 連結）
+  - 記錄作者 README 的配套依賴（Kijai 模型包、Comfy-Org text encoder）與必備節點清單（KJNodes/LTXVideo/VHS/Fill-Nodes）
+  - 記錄 `VideoCombine.save_output=false` 等 workflow 注意事項
 - `docs/custom/research/README.md` 新增 LTX-2 索引項目。
 
 ## 2026-02-23

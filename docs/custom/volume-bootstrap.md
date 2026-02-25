@@ -118,6 +118,7 @@ apt-get update && apt-get install -y jq
 ./scripts/volume/sync-models.sh --target wan2.2-i2v-a14b-lightx2v-4step
 ./scripts/volume/sync-models.sh --target wan2.2-i2v-a14b-fp8-lightx2v-4step
 ./scripts/volume/sync-models.sh --target wan2.2-i2v-a14b-lightning-gguf-q4km
+./scripts/volume/sync-models.sh --target ltx2-phr00t-sfw-v5-i2v
 ./scripts/volume/sync-models.sh --target z-image-nvfp4
 ./scripts/volume/sync-models.sh --target z-image-core --target z-image-qwen-fp8
 ```
@@ -148,6 +149,13 @@ apt-get update && apt-get install -y jq
 - `models/text_encoders/umt5_xxl_fp8_e4m3fn_scaled.safetensors`
 - `models/vae/wan_2.1_vae.safetensors`
 - `models/clip_vision/clip_vision_h.safetensors`
+
+`ltx2-phr00t-sfw-v5-i2v` 包含：
+- `models/diffusion_models/ltx2-phr00tmerge-sfw-v5.safetensors`
+- `models/text_encoders/gemma_3_12B_it_fp8_scaled.safetensors`
+- `models/text_encoders/ltx-2-19b-embeddings_connector_distill_bf16.safetensors`
+- `models/vae/LTX2_audio_vae_bf16.safetensors`
+- `models/vae/LTX2_video_vae_bf16.safetensors`
 
 全下載（只有帶 `--all` 才會做）：
 
